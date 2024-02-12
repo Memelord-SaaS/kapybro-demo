@@ -3,17 +3,19 @@ version: "0.2"
 settings:
 
 
-maintainers:
+maintainers: &maintainers
   teams: [ "maintainers" ]
   users: [ ]
 
 anchors:
 
+  skip_main: &skip_off
+    enabled: false
+
   skip_maintainers: &skip_maintainers
     enabled: true
     conditions:
-      authors:
-        maintainers: true
+      authors: *maintainers
 
   keyword-labeling: &keyword-labeling
     enabled: true
@@ -45,7 +47,7 @@ anchors:
 
   automatic: &automatic
     enabled: true
-    skip: *skip_maintainers
+    skip: *skip_off
     label: "status/triage"
     remove-assignees: false
     keyword-labeling: *keyword-labeling
